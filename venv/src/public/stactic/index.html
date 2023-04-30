@@ -12,6 +12,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="./instascan.min.js"></script>
+
 </head>
 <body id="body">
     <button class="btn " type="button"  id="main"data-toggle="modal" data-target="#exampleModalLong">
@@ -33,14 +35,35 @@
             <h5 class="modal-title" id="exampleModalLongTitle">Terminos y condiciones</h5>
             </div>
             <div class="modal-body">
-                Para cualquier producto no dañado, simplemente devuélvelo  con los accesorios y el paquete incluidos junto con el recibo original (o recibo de regalo) dentro de los 14 días posteriores a la fecha que recibiste el producto, y lo cambiaremos o te ofreceremos un reembolso basado en el método de pago original . Además, ten en cuenta lo siguiente: (i) Los productos solo se pueden devolver en el país en el que se compraron originalmente; y (ii) los siguientes productos no son elegibles para la devolución: [lista de artículos].
+                <div id="qr_reader" style="display: none;">
+                    <video id="preview"></video>
+                    <script type="text/javascript">
+                        let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
+                        scanner.addListener('scan', function (content) {
+                          console.log(content);
+                        });
+                        Instascan.Camera.getCameras().then(function (cameras) {
+                          if (cameras.length > 0) {
+                            scanner.start(cameras[0]);
+                          } else {
+                            console.error('No cameras found.');
+                          }
+                        }).catch(function (e) {
+                          console.error(e);
+                        });
+                      </script>
+                </div>
+                <p>Para cualquier producto no dañado, simplemente devuélvelo  con los accesorios y el paquete incluidos junto con el recibo original (o recibo de regalo) dentro de los 14 días posteriores a la fecha que recibiste el producto, y lo cambiaremos o te ofreceremos un reembolso basado en el método de pago original . Además, ten en cuenta lo siguiente: (i) Los productos solo se pueden devolver en el país en el que se compraron originalmente; y (ii) los siguientes productos no son elegibles para la devolución: [lista de artículos].</p>
             </div>
             <div class="modal-footer">
             <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-            <button type="button" class="btn btn-primary"><a id="a" href="./saludo/index.html">Aceptar</a></button>
+            <button type="button" class="btn btn-primary" id="qr_boton"><a id="a">Aceptar</a></button>
             </div>
         </div>
         </div>
     </div>
+    <script src="https://cdn.rawgit.com/cozmo/jsQR/master/dist/jsQR.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/instascan/1.0.0/index.min.js"></script>
+    <script src="qr-reader.js"></script>
 </body>
 </html>
