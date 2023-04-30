@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const user = JSON.parse(content);
         async function postData() {
             try {
-              const response = await fetch('http://10.32.34.58:5000/api/login', {
+              const response = await fetch('http://127.0.0.1:5000/api/login', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
