@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const user = JSON.parse(content);
         async function postData() {
             try {
-              const response = await fetch('http://127.0.0.1:5000/api/login', {
+              const response = await fetch('http://10.32.34.58:5000/api/login', {
                 method: 'POST',
                 headers: {
                   'Content-Type': 'application/json'
@@ -20,7 +20,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
                 body: JSON.stringify(user)
               });
               const data = await response.json();
-              config.data(data.jwt);
+              const str = data.jwt.slice(2);
+              config.data(str.slice(0, str.length - 1));
               location.href ='./saludo/index.html';
             } catch (error) {
               alert(error);

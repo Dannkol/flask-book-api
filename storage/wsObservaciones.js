@@ -18,17 +18,11 @@ const obtenerFormula = async (token) => {
     const estudiantes = await resultado.json();
     const rta = estudiantes;
 
-    JSON.parse(rta[0]).data.medicamentos.forEach((item) => {
-      html += `<div class="barraCircular d-flex justify-content-center align-items-center   ">
-        <img class="alerta" src="../img/dangerr.png" alt="" srcset="">
-        <div class="contenido">
-            <h2>${item.nombre}</h2>
-            <p class="aaa">Fecha: dd/mm/aa</p>
-            <p class="aaa">Info del tratamiento</p>
-            <p>Dosis: 1 c/d 8hr</p>
-        </div>
-        <img src="../img/complete.png" alt="" srcset="">
-    </div>`;
+    console.log(JSON.parse(rta[0]).data.observaciones);
+    JSON.parse(rta[0]).data.observaciones.forEach((item) => {
+      html += `  <p>${item.fecha}</p>
+      <p>${item.observacion}</p>
+      <p><input type="checkbox">${item.observacion}</p>`;
     });
 
     return html;
