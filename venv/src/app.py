@@ -13,7 +13,7 @@ from flask_cors import CORS
 
 app = Flask(__name__)
 
-CORS(app, origins="http://127.0.0.1:5501", supports_credentials=True )
+CORS(app, origins="https://10.32.34.58:5501/", supports_credentials=True )
 
 
 app.register_blueprint(routers_auth, url_prefix="/api")

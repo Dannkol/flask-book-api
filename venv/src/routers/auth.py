@@ -12,7 +12,7 @@ routers_auth = Blueprint("routes_auth", __name__)
 
 
 @routers_auth.route("/me")
-@cross_origin(origin='http://127.0.0.1:5501', supports_credentials=True)
+@cross_origin(origin='https://10.32.34.58:5501/', supports_credentials=True)
 def me_verify():
     token = request.headers['Authorization'].split(" ")[1]
     return validar_token(token , output=True)
@@ -20,7 +20,7 @@ def me_verify():
 
 
 @routers_auth.route("/cuidador")
-@cross_origin(origin='http://127.0.0.1:5501', supports_credentials=True)
+@cross_origin(origin='https://10.32.34.58:5501/', supports_credentials=True)
 def cuidador_verify():
     token = request.headers['Authorization'].split(" ")[1]
     user = validar_token(token , output=True)
@@ -29,7 +29,7 @@ def cuidador_verify():
 
 
 @routers_auth.route("/login", methods=["post"])
-@cross_origin(origin='http://127.0.0.1:5501', supports_credentials=True)
+@cross_origin(origin='https://10.32.34.58:5501/', supports_credentials=True)
 def login_verificar():
     conexion = obtener_conexion()
     users = []
@@ -53,7 +53,7 @@ def login(users):
 
 
 @routers_auth.route("/formula")
-@cross_origin(origin='http://127.0.0.1:5501', supports_credentials=True)
+@cross_origin(origin='https://10.32.34.58:5501/', supports_credentials=True)
 def formula_verify():
     token = request.headers['Authorization'].split(" ")[1]
     user = validar_token(token , output=True)
