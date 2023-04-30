@@ -2,6 +2,7 @@ import 'https://rawgit.com/schmich/instascan-builds/master/instascan.min.js';
 
 import config from './storage/config.js';
 
+
 document.addEventListener('DOMContentLoaded', (e) => {
 
     let scanner = new Instascan.Scanner({
@@ -33,11 +34,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
           if (cameras.length > 0) {
             scanner.start(cameras[0]);
           } else {
-            console.error("No cameras found.");
+            alert("No camara no encontrada.");
           }
         })
         .catch(function (e) {
-          console.error(e);
+          alert(e);
         });
 
 })
