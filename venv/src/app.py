@@ -9,12 +9,15 @@ from flask import Flask
 
 from flask_cors import CORS
 
+from flask_sslify import SSLify
+
 
 
 app = Flask(__name__)
 
-CORS(app, origins="https://10.32.34.58:5501/", supports_credentials=True )
+CORS(app, resources={r"/*": {"origins": "*"}}, supports_credentials=True )
 
+sslify = SSLify(app)
 
 app.register_blueprint(routers_auth, url_prefix="/api")
 
@@ -24,4 +27,4 @@ def hello_world():
 
 if __name__ == '__main__':
     app.config.from_object(config['development'])
-    app.run()
+    app.run(host="10.32.34.58")
