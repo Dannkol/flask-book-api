@@ -1,7 +1,6 @@
-import config from "../storage/config.js";
+
 export default{
     printMedicamentos(){
-        config.data();
         Object.assign(this, JSON.parse(localStorage.getItem("data")));
         const ws = new Worker("../storage/wsMedicamentos.js", {type:"module"})
         let id = ["#entradasMedicamentos", "cardYpingui"];
