@@ -23,6 +23,7 @@ html, body {
       position: absolute;
       top: 55%;
       left: 50%;
+      width: 25rem;
       transform: translate(-50%, -50%);
   }
   
